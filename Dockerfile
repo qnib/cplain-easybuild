@@ -1,7 +1,7 @@
 ARG DOCKER_REGISTRY=docker.io
 ARG FROM_IMG_REPO=library
 ARG FROM_IMG_NAME="centos"
-ARG FROM_IMG_TAG="7.6.1810"
+ARG FROM_IMG_TAG="7.7.1908"
 ARG FROM_IMG_HASH=""
 FROM ${DOCKER_REGISTRY}/${FROM_IMG_REPO}/${FROM_IMG_NAME}:${FROM_IMG_TAG}${DOCKER_IMG_HASH}
 
@@ -26,4 +26,6 @@ ENV MODULEPATH=/opt/easybuild/modules/all/
 # update $MODULEPATH, and load the EasyBuild module
 RUN lmod use $EASYBUILD_PREFIX/modules/all
 RUN lmod load EasyBuild
+RUN module load EasyBuild
+RUN eb --version
 CMD ['eb', '--version']
